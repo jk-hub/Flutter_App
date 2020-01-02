@@ -7,22 +7,22 @@ class UserLoginForm {
   String password = '';
 }
 
-class SignIn extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _SignInState extends State<SignIn> {
+class _LoginScreenState extends State<LoginScreen> {
   final FocusNode _emailFocus = FocusNode();
   final FocusNode _passwordFocus = FocusNode();
 
   String _validateEmail(String value) {
     value = value.trim();
-    // if (!isEmail(value) && value.length == 0) {
-    //   return "Please enter valid email address.";
-    // } else {
-    //   return null;
-    // }
+    if (value.length == 0) {
+      return "Please enter valid email address.";
+    } else {
+      return null;
+    }
   }
 
   String _validatePassword(String value) {
@@ -61,15 +61,6 @@ class _SignInState extends State<SignIn> {
             child: Column(
               children: <Widget>[
                 Expanded(
-                  child: Container(
-                    padding: EdgeInsets.only(top: 80.0),
-                    child: Text(
-                      "Sign In",
-                      style: TextStyle(fontSize: 25.0),
-                    ),
-                  ),
-                ),
-                Expanded(
                   flex: 10,
                   child: Container(
                     margin: EdgeInsets.only(
@@ -84,8 +75,9 @@ class _SignInState extends State<SignIn> {
                           margin: EdgeInsets.only(top: 50.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(100.0),
+                              ),
                             ),
                             padding: EdgeInsets.only(
                               top: 30.0,
@@ -200,7 +192,8 @@ class _SignInState extends State<SignIn> {
                                             EdgeInsets.fromLTRB(40, 0, 40, 0),
                                         child: RaisedButton(
                                           onPressed: () {
-                                            // signinUser
+                                            Navigator.pushNamed(
+                                                context, "/home");
                                           },
                                           padding: EdgeInsets.all(
                                             (queryData.size.height / 70.0),
@@ -211,7 +204,7 @@ class _SignInState extends State<SignIn> {
                                                 new BorderRadius.circular(30.0),
                                           ),
                                           child: Text(
-                                            "SIGN IN",
+                                            "Login",
                                             style: TextStyle(
                                                 fontSize: 16.0,
                                                 fontFamily: 'roboto',
@@ -254,28 +247,6 @@ class _SignInState extends State<SignIn> {
                                     ],
                                   ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment(0.0, -1.0),
-                          child: Container(
-                            height: 95.0,
-                            width: 95.0,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[],
-                            ),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Theme.of(context).accentColor,
-                                width: 3.0,
-                              ),
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage("assets/img/reazy_logo.png"),
                               ),
                             ),
                           ),

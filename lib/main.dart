@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:social/SplashScreen.dart';
+import 'package:social/comment.dart';
+import 'package:social/home_screen_body.dart';
+import 'package:social/login_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Social media",
+      title: "Disqus System",
       initialRoute: '/',
       onGenerateRoute: routing,
       theme: ThemeData(
@@ -26,9 +30,17 @@ class _MyAppState extends State<MyApp> {
 
   Route routing(settings) {
     switch (settings.name) {
-      case '/guidelines':
-        // return PageTransition(
-        // child: IntroScreen(), type: PageTransitionType.rightToLeftWithFade);
+      case '/login':
+        return PageTransition(
+        child: LoginScreen(), type: PageTransitionType.rightToLeftWithFade);
+        break;
+      case '/home':
+        return PageTransition(
+        child: InstaHome(), type: PageTransitionType.rightToLeftWithFade);
+        break;
+        case '/comment':
+        return PageTransition(
+        child: CommentScreen(), type: PageTransitionType.rightToLeftWithFade);
         break;
       default:
         return null;
